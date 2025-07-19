@@ -151,39 +151,39 @@ const CalendarPreview = () => {
       <div className="flex items-center justify-between">
         <button 
           onClick={prevMonth} 
-          className="group flex items-center justify-center w-10 h-10 rounded-full bg-gray-700 hover:bg-gray-600 transition-all duration-200 hover:scale-105"
+          className="group flex items-center justify-center w-10 h-10 rounded-full bg-[#F8F9FA] dark:bg-[#121212] border border-[#E5E7EB] dark:border-[#374151] hover:bg-[#00A99D]/10 hover:border-[#00A99D]/30 transition-all duration-200 hover:scale-105"
         >
-          <svg className="w-5 h-5 text-gray-300 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-5 h-5 text-[#6B7280] dark:text-[#9CA3AF] group-hover:text-[#00A99D] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
         </button>
         
         <div className="text-center">
-          <h3 className="text-xl font-bold text-white">
+          <h3 className="text-xl font-bold text-[#1E1E1E] dark:text-[#E5E7EB]">
             {format(displayDate, 'MMMM yyyy')}
           </h3>
-          <p className="text-sm text-gray-400 mt-1">
+          <p className="text-sm text-[#6B7280] dark:text-[#9CA3AF] mt-1">
             {currentMonthRecurring.length} recurring {currentMonthRecurring.length === 1 ? 'date' : 'dates'}
           </p>
         </div>
         
         <button 
           onClick={nextMonth} 
-          className="group flex items-center justify-center w-10 h-10 rounded-full bg-gray-700 hover:bg-gray-600 transition-all duration-200 hover:scale-105"
+          className="group flex items-center justify-center w-10 h-10 rounded-full bg-[#F8F9FA] dark:bg-[#121212] border border-[#E5E7EB] dark:border-[#374151] hover:bg-[#00A99D]/10 hover:border-[#00A99D]/30 transition-all duration-200 hover:scale-105"
         >
-          <svg className="w-5 h-5 text-gray-300 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-5 h-5 text-[#6B7280] dark:text-[#9CA3AF] group-hover:text-[#00A99D] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
         </button>
       </div>
 
       {/* Calendar Grid */}
-      <div className="bg-gray-750 rounded-xl p-4 shadow-lg border border-gray-600">
+      <div className="bg-white dark:bg-[#1E1E1E] rounded-xl p-4 shadow-lg border border-[#E5E7EB] dark:border-[#374151]">
         {/* Day Headers */}
         <div className="grid grid-cols-7 gap-2 mb-4">
           {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => (
             <div key={day} className="text-center py-2">
-              <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
+              <span className="text-xs font-semibold text-[#6B7280] dark:text-[#9CA3AF] uppercase tracking-wider">
                 {day}
               </span>
             </div>
@@ -212,14 +212,14 @@ const CalendarPreview = () => {
                   relative flex items-center justify-center h-12 w-full rounded-lg text-sm font-medium
                   transition-all duration-200 cursor-pointer group
                   ${isRecurring 
-                    ? 'bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-lg hover:shadow-xl hover:scale-105 ring-2 ring-blue-400/30' 
+                    ? 'bg-[#00A99D] text-white shadow-lg hover:shadow-xl hover:scale-105 ring-2 ring-[#00A99D]/30' 
                     : isPastDate
-                    ? 'text-gray-500 hover:bg-gray-700/50'
-                    : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+                    ? 'text-[#6B7280] dark:text-[#9CA3AF] hover:bg-[#F8F9FA] dark:hover:bg-[#121212]'
+                    : 'text-[#1E1E1E] dark:text-[#E5E7EB] hover:bg-[#F8F9FA] dark:hover:bg-[#121212] hover:text-[#00A99D]'
                   }
-                  ${isTodayDate && !isRecurring ? 'bg-gray-600 ring-2 ring-gray-400 text-white' : ''}
-                  ${isStartDate && !isRecurring ? 'ring-2 ring-green-400 bg-green-500/20' : ''}
-                  ${isEndDate && !isRecurring ? 'ring-2 ring-red-400 bg-red-500/20' : ''}
+                  ${isTodayDate && !isRecurring ? 'bg-[#F8F9FA] dark:bg-[#121212] ring-2 ring-[#00A99D]/50 text-[#00A99D]' : ''}
+                  ${isStartDate && !isRecurring ? 'ring-2 ring-[#00A99D] bg-[#00A99D]/10' : ''}
+                  ${isEndDate && !isRecurring ? 'ring-2 ring-[#00A99D] bg-[#00A99D]/10' : ''}
                 `}
               >
                 <span className="relative z-10">
@@ -228,19 +228,19 @@ const CalendarPreview = () => {
                 
                 {/* Special indicators */}
                 {isRecurring && (
-                  <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-blue-400/20 to-transparent" />
+                  <div className="absolute inset-0 rounded-lg bg-[#00A99D]/20" />
                 )}
                 
                 {isStartDate && (
-                  <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full border-2 border-gray-800" />
+                  <div className="absolute -top-1 -right-1 w-3 h-3 bg-[#00A99D] rounded-full border-2 border-white dark:border-[#1E1E1E]" />
                 )}
                 
                 {isEndDate && (
-                  <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-400 rounded-full border-2 border-gray-800" />
+                  <div className="absolute -top-1 -right-1 w-3 h-3 bg-[#00A99D] rounded-full border-2 border-white dark:border-[#1E1E1E]" />
                 )}
                 
                 {isTodayDate && (
-                  <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-white rounded-full" />
+                  <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-[#00A99D] rounded-full" />
                 )}
               </div>
             );
@@ -251,42 +251,42 @@ const CalendarPreview = () => {
       {/* Legend */}
       <div className="flex flex-wrap gap-4 text-xs">
         <div className="flex items-center space-x-2">
-          <div className="w-3 h-3 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full"></div>
-          <span className="text-gray-400">Recurring dates</span>
+          <div className="w-3 h-3 bg-[#00A99D] rounded-full"></div>
+          <span className="text-[#6B7280] dark:text-[#9CA3AF]">Recurring dates</span>
         </div>
         <div className="flex items-center space-x-2">
-          <div className="w-3 h-3 bg-gray-600 rounded-full ring-2 ring-gray-400"></div>
-          <span className="text-gray-400">Today</span>
+          <div className="w-3 h-3 bg-[#F8F9FA] dark:bg-[#121212] rounded-full ring-2 ring-[#00A99D]/50"></div>
+          <span className="text-[#6B7280] dark:text-[#9CA3AF]">Today</span>
         </div>
         <div className="flex items-center space-x-2">
-          <div className="w-3 h-3 bg-green-400 rounded-full"></div>
-          <span className="text-gray-400">Start date</span>
+          <div className="w-3 h-3 bg-[#00A99D] rounded-full"></div>
+          <span className="text-[#6B7280] dark:text-[#9CA3AF]">Start date</span>
         </div>
         {state.endDate && (
           <div className="flex items-center space-x-2">
-            <div className="w-3 h-3 bg-red-400 rounded-full"></div>
-            <span className="text-gray-400">End date</span>
+            <div className="w-3 h-3 bg-[#00A99D] rounded-full"></div>
+            <span className="text-[#6B7280] dark:text-[#9CA3AF]">End date</span>
           </div>
         )}
       </div>
 
       {/* Summary Stats */}
-      <div className="bg-gray-750 rounded-lg p-4 border border-gray-600">
-        <h4 className="text-sm font-semibold text-gray-300 mb-2">Summary</h4>
+      <div className="bg-white dark:bg-[#1E1E1E] rounded-lg p-4 border border-[#E5E7EB] dark:border-[#374151]">
+        <h4 className="text-sm font-semibold text-[#1E1E1E] dark:text-[#E5E7EB] mb-2">Summary</h4>
         <div className="grid grid-cols-2 gap-4 text-sm">
           <div>
-            <span className="text-gray-400">Total occurrences:</span>
-            <span className="ml-2 font-medium text-white">{recurringDates.length}</span>
+            <span className="text-[#6B7280] dark:text-[#9CA3AF]">Total occurrences:</span>
+            <span className="ml-2 font-medium text-[#1E1E1E] dark:text-[#E5E7EB]">{recurringDates.length}</span>
           </div>
           <div>
-            <span className="text-gray-400">This month:</span>
-            <span className="ml-2 font-medium text-white">{currentMonthRecurring.length}</span>
+            <span className="text-[#6B7280] dark:text-[#9CA3AF]">This month:</span>
+            <span className="ml-2 font-medium text-[#1E1E1E] dark:text-[#E5E7EB]">{currentMonthRecurring.length}</span>
           </div>
         </div>
         {recurringDates.length > 0 && (
           <div className="mt-2 text-sm">
-            <span className="text-gray-400">Next occurrence:</span>
-            <span className="ml-2 font-medium text-blue-400">
+            <span className="text-[#6B7280] dark:text-[#9CA3AF]">Next occurrence:</span>
+            <span className="ml-2 font-medium text-[#00A99D]">
               {format(recurringDates.find(date => isAfter(date, new Date())) || recurringDates[0], 'MMM d, yyyy')}
             </span>
           </div>
