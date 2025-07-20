@@ -1,4 +1,4 @@
-
+// components/CustomizationPanel.tsx
 'use client';
 
 import { useRecurrenceStore } from '@/store/useRecurrenceStore';
@@ -14,7 +14,7 @@ const CustomizationPanel = () => {
     setMonthlyConfig,
   } = useRecurrenceStore();
 
-  const weekDays = ['S', 'M', 'T', 'W', 'T', 'F', 'S']; // Single letter for circles
+  const weekDays = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
   const weekDayOptions = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   const weekOptions = ['First', 'Second', 'Third', 'Fourth', 'Last'];
 
@@ -27,7 +27,6 @@ const CustomizationPanel = () => {
 
   return (
     <div className="space-y-4 text-sm">
-      {/* Interval Input */}
       <div className="flex items-center space-x-3">
         <label htmlFor="interval" className="font-semibold text-gray-600 dark:text-gray-300">Every</label>
         <input
@@ -41,7 +40,6 @@ const CustomizationPanel = () => {
         <span className="text-gray-600 dark:text-gray-400">{intervalLabels[recurrenceType]}</span>
       </div>
 
-      {/* Weekly Day Selector */}
       {recurrenceType === 'weekly' && (
         <div className="space-y-2">
           <p className="font-semibold text-gray-600 dark:text-gray-300">Repeat on</p>
@@ -52,7 +50,7 @@ const CustomizationPanel = () => {
                 onClick={() => toggleDayOfWeek(index)}
                 className={`flex h-9 w-9 items-center justify-center rounded-full font-bold transition-all duration-200 ${
                   daysOfWeek.includes(index)
-                    ? 'bg-[#00A99D] text-white' // Active: Primary Teal
+                    ? 'bg-[#00A99D] text-white'
                     : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600'
                 }`}
               >
@@ -63,12 +61,11 @@ const CustomizationPanel = () => {
         </div>
       )}
 
-      {/* Monthly Pattern Selector */}
       {recurrenceType === 'monthly' && (
         <div className="space-y-3">
-          {/* Radio Button for "On day" */}
           <div className="flex items-center">
             <input type="radio" id="on_day" name="monthly_type" checked={monthlyConfig.type === 'day_of_month'}
+              // *** THE FIX IS HERE: Reset the state to a valid default on change ***
               onChange={() => setMonthlyConfig({ type: 'day_of_month', day: 1, week: 1 })}
               className="h-4 w-4 text-[#00A99D] focus:ring-[#00A99D] bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
             />
@@ -81,9 +78,9 @@ const CustomizationPanel = () => {
             />
           </div>
 
-          {/* Radio Button for "On the" */}
           <div className="flex items-center">
             <input type="radio" id="on_the" name="monthly_type" checked={monthlyConfig.type === 'day_of_week'}
+               // *** THE FIX IS HERE: Reset the state to a valid default on change ***
               onChange={() => setMonthlyConfig({ type: 'day_of_week', day: 1, week: 1 })}
               className="h-4 w-4 text-[#00A99D] focus:ring-[#00A99D] bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
             />
