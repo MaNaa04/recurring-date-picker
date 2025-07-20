@@ -7,16 +7,13 @@ import {
   addMonths, startOfMonth, endOfMonth, eachDayOfInterval, format,
   isSameDay, getDay, isToday
 } from 'date-fns';
-
-// NOTE: You would need to export this function from its test file or move it into a separate utility file.
-// For simplicity here, I'm assuming it's accessible.
+// CORRECT IMPORT: The logic is now imported from its own file.
 import { generateRecurringDates } from '@/lib/dateLogic';
 
 const CalendarPreview = () => {
   const state = useRecurrenceStore();
   const [displayDate, setDisplayDate] = useState(new Date());
 
-  // Memoize the recurring dates calculation for performance
   const recurringDates = useMemo(() => generateRecurringDates(state), [state]);
 
   const monthStart = startOfMonth(displayDate);
@@ -45,8 +42,8 @@ const CalendarPreview = () => {
 
       {/* Calendar Grid */}
       <div className="grid grid-cols-7 gap-1 text-center text-sm">
-        {/* Day of the week headers */}
-       {['S', 'M', 'T', 'W', 'T', 'F', 'S'].map((day, index) => (
+        {/* Day of the week headers with unique keys */}
+        {['S', 'M', 'T', 'W', 'T', 'F', 'S'].map((day, index) => (
           <div key={day + index} className="font-bold text-gray-400 dark:text-gray-500 py-2">{day}</div>
         ))}
 
@@ -63,9 +60,9 @@ const CalendarPreview = () => {
               key={day.toString()}
               className={`flex items-center justify-center h-10 w-10 rounded-full font-medium ${
                 isRecurring 
-                  ? 'bg-[#00A99D] text-white' // Salesku: Highlight recurring dates with Primary Teal
+                  ? 'bg-[#00A99D] text-white'
                   : isToday(day) 
-                  ? 'bg-gray-200 dark:bg-gray-600 text-gray-800 dark:text-gray-100' // Highlight today
+                  ? 'bg-gray-200 dark:bg-gray-600 text-gray-800 dark:text-gray-100'
                   : 'text-gray-700 dark:text-gray-300'
               }`}
             >
@@ -78,4 +75,5 @@ const CalendarPreview = () => {
   );
 };
 
+// CORRECT EXPORT: This makes the component available for other files to import.
 export default CalendarPreview;

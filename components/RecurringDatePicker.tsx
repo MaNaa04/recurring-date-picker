@@ -1,4 +1,4 @@
-// components/RecurringDatePicker.tsx
+
 import RecurrenceOptions from './RecurrenceOptions';
 import CustomizationPanel from './CustomizationPanel';
 import CalendarPreview from './CalendarPreview';
@@ -6,8 +6,7 @@ import DateRangePicker from './DateRangePicker';
 
 const RecurringDatePicker = () => {
   return (
-    // Main container card with Salesku styling: rounded corners, shadow, and backgrounds.
-    // All hero/landing page elements have been removed to focus on the component.
+    
     <div className="flex w-full max-w-5xl rounded-xl bg-white dark:bg-[#1E1E1E] shadow-lg font-sans my-12">
       
       {/* Left Panel: Configuration */}

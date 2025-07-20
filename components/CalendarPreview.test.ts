@@ -1,16 +1,17 @@
 // components/CalendarPreview.test.ts
-import { generateRecurringDates } from '@/lib/dateLogic'; // <-- Note the correct import path
+import { generateRecurringDates } from '@/lib/dateLogic';
 import { startOfDay } from 'date-fns';
+import type { RecurrenceState } from '@/store/useRecurrenceStore'; // Import the main state type
 
-// A mock state for our tests
-const createMockState = (overrides: any) => ({
+// Use Partial<RecurrenceState> to replace 'any' for type safety
+const createMockState = (overrides: Partial<RecurrenceState>): RecurrenceState => ({
   startDate: startOfDay(new Date('2025-08-01')),
   endDate: null,
   recurrenceType: 'daily',
   interval: 1,
   daysOfWeek: [],
   monthlyConfig: { type: 'day_of_month', day: 1, week: 1 },
-  // These actions don't need to do anything for this logic test
+  // Mock actions
   setStartDate: () => {},
   setRecurrenceType: () => {},
   setInterval: () => {},
@@ -29,7 +30,6 @@ describe('generateRecurringDates', () => {
 
     const dates = generateRecurringDates(mockState);
 
-    // We expect the first 5 dates to be Aug 1, 4, 7, 10, 13
     const expectedDates = [
       new Date('2025-08-01'),
       new Date('2025-08-04'),
@@ -38,7 +38,6 @@ describe('generateRecurringDates', () => {
       new Date('2025-08-13'),
     ].map(d => startOfDay(d));
 
-    // Check if the first 5 generated dates match what we expect
     expect(dates.slice(0, 5)).toEqual(expectedDates);
   });
 });

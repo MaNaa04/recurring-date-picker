@@ -1,4 +1,4 @@
-// app/page.tsx
+
 import RecurringDatePicker from '@/components/RecurringDatePicker';
 
 export default function Home() {
