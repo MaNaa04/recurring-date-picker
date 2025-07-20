@@ -5,35 +5,20 @@ import { useRecurrenceStore } from '@/store/useRecurrenceStore';
 
 const CustomizationPanel = () => {
   const {
-    recurrenceType,
-    interval,
-    setInterval,
-    daysOfWeek,
-    toggleDayOfWeek,
-    monthlyConfig,
-    setMonthlyConfig,
+    recurrenceType, interval, setInterval, daysOfWeek, toggleDayOfWeek, monthlyConfig, setMonthlyConfig,
   } = useRecurrenceStore();
 
   const weekDays = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
   const weekDayOptions = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   const weekOptions = ['First', 'Second', 'Third', 'Fourth', 'Last'];
-
-  const intervalLabels = {
-    daily: 'day(s)',
-    weekly: 'week(s)',
-    monthly: 'month(s)',
-    yearly: 'year(s)',
-  };
+  const intervalLabels = { daily: 'day(s)', weekly: 'week(s)', monthly: 'month(s)', yearly: 'year(s)' };
 
   return (
     <div className="space-y-4 text-sm">
       <div className="flex items-center space-x-3">
         <label htmlFor="interval" className="font-semibold text-gray-600 dark:text-gray-300">Every</label>
         <input
-          id="interval"
-          type="number"
-          min="1"
-          value={interval}
+          id="interval" type="number" min="1" value={interval}
           onChange={(e) => setInterval(parseInt(e.target.value, 10) || 1)}
           className="w-16 rounded-lg bg-gray-100 dark:bg-gray-700 p-2 text-center font-medium text-gray-800 dark:text-white border-transparent focus:ring-2 focus:ring-[#00A99D]"
         />
@@ -46,16 +31,13 @@ const CustomizationPanel = () => {
           <div className="flex justify-between">
             {weekDays.map((day, index) => (
               <button
-                key={index}
-                onClick={() => toggleDayOfWeek(index)}
+                key={index} onClick={() => toggleDayOfWeek(index)}
                 className={`flex h-9 w-9 items-center justify-center rounded-full font-bold transition-all duration-200 ${
                   daysOfWeek.includes(index)
                     ? 'bg-[#00A99D] text-white'
                     : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-600'
                 }`}
-              >
-                {day}
-              </button>
+              >{day}</button>
             ))}
           </div>
         </div>
@@ -65,7 +47,6 @@ const CustomizationPanel = () => {
         <div className="space-y-3">
           <div className="flex items-center">
             <input type="radio" id="on_day" name="monthly_type" checked={monthlyConfig.type === 'day_of_month'}
-              // *** THE FIX IS HERE: Reset the state to a valid default on change ***
               onChange={() => setMonthlyConfig({ type: 'day_of_month', day: 1, week: 1 })}
               className="h-4 w-4 text-[#00A99D] focus:ring-[#00A99D] bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
             />
@@ -77,18 +58,17 @@ const CustomizationPanel = () => {
               disabled={monthlyConfig.type !== 'day_of_month'}
             />
           </div>
-
-          <div className="flex items-center">
+          {/* RESPONSIVE CHANGE: Add flex-wrap to this container to allow dropdowns to stack on very small screens. */}
+          <div className="flex items-center flex-wrap gap-2">
             <input type="radio" id="on_the" name="monthly_type" checked={monthlyConfig.type === 'day_of_week'}
-               // *** THE FIX IS HERE: Reset the state to a valid default on change ***
               onChange={() => setMonthlyConfig({ type: 'day_of_week', day: 1, week: 1 })}
               className="h-4 w-4 text-[#00A99D] focus:ring-[#00A99D] bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
             />
-            <label htmlFor="on_the" className="ml-2 font-medium text-gray-700 dark:text-gray-200">On the</label>
+            <label htmlFor="on_the" className="ml-2 mr-1 font-medium text-gray-700 dark:text-gray-200">On the</label>
             <select
               value={monthlyConfig.week}
               onChange={(e) => setMonthlyConfig({ ...monthlyConfig, week: parseInt(e.target.value, 10) })}
-              className="ml-2 rounded-lg bg-gray-100 dark:bg-gray-700 p-2 font-medium text-gray-800 dark:text-white disabled:opacity-50 border-transparent focus:ring-2 focus:ring-[#00A99D]"
+              className="rounded-lg bg-gray-100 dark:bg-gray-700 p-2 font-medium text-gray-800 dark:text-white disabled:opacity-50 border-transparent focus:ring-2 focus:ring-[#00A99D]"
               disabled={monthlyConfig.type !== 'day_of_week'}
             >
               {weekOptions.map((opt, index) => (<option key={opt} value={index + 1}>{opt}</option>))}
@@ -96,7 +76,7 @@ const CustomizationPanel = () => {
             <select
               value={monthlyConfig.day}
               onChange={(e) => setMonthlyConfig({ ...monthlyConfig, day: parseInt(e.target.value, 10) })}
-              className="ml-2 rounded-lg bg-gray-100 dark:bg-gray-700 p-2 font-medium text-gray-800 dark:text-white disabled:opacity-50 border-transparent focus:ring-2 focus:ring-[#00A99D]"
+              className="rounded-lg bg-gray-100 dark:bg-gray-700 p-2 font-medium text-gray-800 dark:text-white disabled:opacity-50 border-transparent focus:ring-2 focus:ring-[#00A99D]"
               disabled={monthlyConfig.type !== 'day_of_week'}
             >
               {weekDayOptions.map((day, index) => (<option key={day} value={index}>{day}</option>))}
