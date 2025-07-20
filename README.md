@@ -2,7 +2,7 @@
 
 A modern, reusable React component for selecting complex recurring schedules, inspired by calendar applications like Google Calendar and TickTick.
 
-![Project Screenshot](/recurring-date-picker/screenshot.png)
+![Project Screenshot](./public/screenshot.png)
 
 ---
 
