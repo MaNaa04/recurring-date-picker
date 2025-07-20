@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📅 Recurring Date Picker Component
 
-## Getting Started
+A modern, reusable React component for selecting complex recurring schedules, inspired by calendar applications like Google Calendar and TickTick.
 
-First, run the development server:
+![Project Screenshot](./public/screenshot.png)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ✨ Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+* **Flexible Recurrence Rules:** Supports Daily, Weekly, Monthly, and Yearly options.
+* **Custom Intervals:** Set schedules to repeat every 'X' days, weeks, months, or years.
+* **Advanced Weekly Selection:** Choose specific days of the week for weekly recurrences.
+* **Complex Monthly Patterns:** Supports both "On day X of the month" and "On the Nth weekday of the month" (e.g., the second Tuesday).
+* **Date Range Selection:** Set a required start date and an optional end date to constrain the pattern.
+* **Live Calendar Preview:** An interactive mini-calendar that instantly visualizes the selected recurring dates.
+* **Themed UI:** A clean, professional UI inspired by modern SaaS dashboards.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🚀 Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
+* **Framework**: Next.js (React)
+* **Language**: TypeScript
+* **Styling**: Tailwind CSS
+* **State Management**: Zustand
+* **Date Logic**: `date-fns`
+* **Testing**: Jest & React Testing Library
+* **Deployment**: Vercel
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🛠️ Getting Started
 
-## Deploy on Vercel
+To get a local copy up and running, follow these simple steps.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Prerequisites
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+You need to have Node.js and npm installed on your machine.
+
+### Installation & Setup
+
+1.  Clone the repository:
+    ```sh
+    git clone [https://github.com/your-username/recurring-date-picker.git](https://github.com/your-username/recurring-date-picker.git)
+    ```
+2.  Navigate to the project directory:
+    ```sh
+    cd recurring-date-picker
+    ```
+3.  Install NPM packages:
+    ```sh
+    npm install
+    ```
+4.  Run the development server:
+    ```sh
+    npm run dev
+    ```
+5.  Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+---
+
+## ✅ Running Tests
+
+This project includes unit and integration tests to ensure reliability and correctness.
+
+To run the tests, execute the following command:
+
+```sh
+npm test
